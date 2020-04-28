@@ -1,0 +1,28 @@
+{
+  "name":        "sdsim",
+  "version":     "0.1.0",
+  "description": "Social-distancing in a supermarket: a 2D physics simulator",
+  "homepage":    "https://github.com/michaelhogg/sdsim",
+  "bugs":        "https://github.com/michaelhogg/sdsim/issues",
+  "repository":  "github:michaelhogg/sdsim",
+  "license":     "MIT",
+  "scripts": {
+
+    "compile-game-config": "node scripts/compile-game-config.js",
+
+    "dev":   "yarn compile-game-config && webpack-dev-server --progress --mode development",
+    "build": "yarn compile-game-config && webpack            --progress --mode production"
+
+  },
+  "dependencies": {
+    "phaser": "^3.22.0"
+  },
+  "devDependencies": {
+    "strip-json-comments": "^3.1.0",
+    "ts-loader":           "^7.0.1",
+    "typescript":          "^3.8.3",
+    "webpack":             "^4.42.1",
+    "webpack-cli":         "^3.3.11",
+    "webpack-dev-server":  "^3.10.3"
+  }
+}
