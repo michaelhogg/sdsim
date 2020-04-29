@@ -1,0 +1,129 @@
+{
+  "AVERAGE_FPS": 60,
+  "SPAWN_INTERVAL_FRAMES": {
+    "SHOPPER": 300,
+    "RESTOCKER": 600
+  },
+  "WORLD": {
+    "WIDTH": 1600,
+    "HEIGHT": 1200,
+    "BOUNDS": {
+      "MARGIN": 660,
+      "LEFT": -660,
+      "TOP": -660,
+      "WIDTH": 2920,
+      "HEIGHT": 2520
+    }
+  },
+  "SHELVES": {
+    "X": {
+      "LEFT": 335,
+      "MIDDLE": 800,
+      "RIGHT": 1265
+    },
+    "Y": {
+      "UPPER": 200,
+      "LOWER": 860
+    }
+  },
+  "SHELF": {
+    "WIDTH": 180,
+    "HEIGHT": 140,
+    "LABEL_MARGIN": 13,
+    "SLOTS": {
+      "TOTAL": 8,
+      "PER_ROW": 4,
+      "WIDTH_HEIGHT": 33,
+      "GRID_INTERVAL": 40,
+      "MARGIN": {
+        "LEFT": 13,
+        "TOP": 53
+      }
+    }
+  },
+  "PERSON": {
+    "RADIUS": 27,
+    "MAX_VELOCITY": 1.75,
+    "WARNING_OUTLINE": 13,
+    "NAME_POSITION": {
+      "LEFT": 39,
+      "TOP": -23
+    },
+    "BASKET_SLOTS": {
+      "LEFT": 40,
+      "TOP": 7,
+      "WIDTH_HEIGHT": 11,
+      "GRID_INTERVAL": 17,
+      "OUTLINE": 3
+    },
+    "TARGET_PROXIMITY": 265
+  },
+  "SHOPPER": {
+    "INITIAL_VELOCITY": [
+      1.75,
+      0
+    ]
+  },
+  "RESTOCKER": {
+    "INITIAL_VELOCITY": [
+      -1.75,
+      -1.75
+    ],
+    "TOTAL_BASKET_SLOTS": 8
+  },
+  "PPL": {
+    "ALPHA_DISTANCE": {
+      "MIN": 200,
+      "MAX": 330
+    },
+    "THICKNESS_DISTANCE": {
+      "MIN": 13,
+      "MAX": 330
+    },
+    "THICKNESS_MULTIPLIER": 11,
+    "THICKNESS_EXPONENT": 2,
+    "WARNING_DISTANCE": 200
+  },
+  "FORCES": {
+    "TARGET_MULTIPLIER": 0.0002,
+    "OTHER_PERSON_MULTIPLIER": -40000000000,
+    "OTHER_PERSON_EXPONENT": 6
+  },
+  "LOCATIONS": {
+    "ENTRANCE": {
+      "LABEL": [
+        40,
+        600
+      ],
+      "SPAWN": [
+        -135,
+        600
+      ]
+    },
+    "CHECKOUT": {
+      "LABEL": [
+        1560,
+        600
+      ],
+      "TARGET": [
+        1892,
+        600
+      ]
+    },
+    "STOREROOM": {
+      "LABEL": [
+        1505,
+        1160
+      ],
+      "TARGET": [
+        1865,
+        1465
+      ]
+    }
+  },
+  "TEXT_SIZES": {
+    "LOCATION": 27,
+    "PERSON": 21,
+    "SHELF": 24
+  }
+}
