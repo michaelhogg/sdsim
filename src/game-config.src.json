@@ -1,0 +1,132 @@
+/**
+ * @license MIT
+ * @see github.com/michaelhogg/sdsim
+ */
+
+/**
+ * Running the command `yarn compile-game-config`
+ * will execute `scripts/compile-game-config.js`
+ * to compile this file to `src/game-config.json`.
+ *
+ * String values will be evaluated/compiled to numbers
+ * or two-element (X,Y) arrays of numbers.
+ *
+ * Within string values, "GAME" is a reference to
+ * the root of this Game Configuration object.
+ */
+{
+  "AVERAGE_FPS": 60,  // @see photonstorm.github.io/phaser3-docs/Phaser.Core.TimeStep.html#actualFps
+                      // @see photonstorm.github.io/phaser3-docs/Phaser.Core.TimeStep.html#targetFps
+  "SPAWN_INTERVAL_FRAMES": {
+    "SHOPPER":    "5 * GAME.AVERAGE_FPS",
+    "RESTOCKER": "10 * GAME.AVERAGE_FPS"
+  },
+
+  "WORLD": {
+    "WIDTH":  1600,
+    "HEIGHT": 1200,
+    "BOUNDS": {
+      "MARGIN": 660,
+      "LEFT":   "-GAME.WORLD.BOUNDS.MARGIN",
+      "TOP":    "-GAME.WORLD.BOUNDS.MARGIN",
+      "WIDTH":  "GAME.WORLD.WIDTH  + (2 * GAME.WORLD.BOUNDS.MARGIN)",
+      "HEIGHT": "GAME.WORLD.HEIGHT + (2 * GAME.WORLD.BOUNDS.MARGIN)"
+    }
+  },
+
+  "SHELVES": {
+    "X": {
+      "LEFT":   "(GAME.WORLD.WIDTH / 2) - 465",
+      "MIDDLE": "(GAME.WORLD.WIDTH / 2)",
+      "RIGHT":  "(GAME.WORLD.WIDTH / 2) + 465"
+    },
+    "Y": {
+      "UPPER": 200,
+      "LOWER": 860
+    }
+  },
+
+  "SHELF": {
+    "WIDTH":        180,
+    "HEIGHT":       140,
+    "LABEL_MARGIN": 13,
+    "SLOTS": {
+      "TOTAL":         8,
+      "PER_ROW":       4,
+      "WIDTH_HEIGHT":  33,
+      "GRID_INTERVAL": 40,
+      "MARGIN": {
+        "LEFT": 13,
+        "TOP":  53
+      }
+    }
+  },
+
+  "PERSON": {
+    "RADIUS":          27,
+    "MAX_VELOCITY":    1.75,
+    "WARNING_OUTLINE": 13,
+    "NAME_POSITION":   {
+      "LEFT": 39,
+      "TOP":  -23
+    },
+    "BASKET_SLOTS": {
+      "LEFT":          40,
+      "TOP":           7,
+      "WIDTH_HEIGHT":  11,
+      "GRID_INTERVAL": 17,
+      "OUTLINE":       3
+    },
+    "TARGET_PROXIMITY": 265  // A Person will despawn when they reach this proximity of their final Target.
+  },
+
+  "SHOPPER": {
+    "INITIAL_VELOCITY": "[GAME.PERSON.MAX_VELOCITY, 0]"
+  },
+
+  "RESTOCKER": {
+    "INITIAL_VELOCITY":   "[-GAME.PERSON.MAX_VELOCITY, -GAME.PERSON.MAX_VELOCITY]",
+    "TOTAL_BASKET_SLOTS": "GAME.SHELF.SLOTS.TOTAL"
+  },
+
+  "PPL": {  // PersonPairLine
+    "ALPHA_DISTANCE": {
+      "MIN": 200,
+      "MAX": 330
+    },
+    "THICKNESS_DISTANCE": {
+      "MIN": 13,
+      "MAX": 330
+    },
+    "THICKNESS_MULTIPLIER": 11,
+    "THICKNESS_EXPONENT":   2,
+    "WARNING_DISTANCE":     200
+  },
+
+  "FORCES": {
+    "TARGET_MULTIPLIER":       2e-4,
+    "OTHER_PERSON_MULTIPLIER": -4e10,
+    "OTHER_PERSON_EXPONENT":   6
+  },
+
+  "LOCATIONS": {
+    "ENTRANCE": {
+      "LABEL": "[  40, GAME.WORLD.HEIGHT / 2]",
+      "SPAWN": "[-135, GAME.WORLD.HEIGHT / 2]"  // Spawn point for new Shoppers.
+    },
+    "CHECKOUT": {
+      "LABEL":  "[GAME.WORLD.WIDTH - 40,                                                GAME.WORLD.HEIGHT / 2]",
+      "TARGET": "[GAME.WORLD.WIDTH + GAME.PERSON.TARGET_PROXIMITY + GAME.PERSON.RADIUS, GAME.WORLD.HEIGHT / 2]"
+    },
+    "STOREROOM": {
+      "LABEL":  "[GAME.WORLD.WIDTH - 95,                           GAME.WORLD.HEIGHT - 40]",
+      "TARGET": "[GAME.WORLD.WIDTH + GAME.PERSON.TARGET_PROXIMITY, GAME.WORLD.HEIGHT + GAME.PERSON.TARGET_PROXIMITY]"
+    }
+  },
+
+  "TEXT_SIZES": {
+    "LOCATION": 27,  // Entrance, Checkout, Storeroom.
+    "PERSON":   21,
+    "SHELF":    24
+  }
+}
